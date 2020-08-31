@@ -1,0 +1,35 @@
+.bg-image {
+  background-image: url("../../assets/image.gif");
+  filter: blur(10px);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 93vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Position text in the middle of the page/image */
+.content {
+  background-color: rgba(0, 0, 0, 0.719); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 20%;
+  text-align: center;
+  border-radius: 20px;
+}
+
+.input {
+  width: 95%;
+  color: white !important;
+}
+
+.button-color {
+  color: teal !important;
+  border-color: teal !important;
+}
