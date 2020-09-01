@@ -89,10 +89,13 @@ const useStyles = makeStyles(theme => ({
     marginLeft: 0
   },
   menuItem: {
-    padding: "25px"
+    padding: "15px"
   },
   activeMenu: {
     backgroundColor: "#1dc4e9"
+  },
+  icon: {
+    paddingRight: "15px"
   }
 }));
 
@@ -180,6 +183,7 @@ const NavbarLeft = props => {
                 activeRoute === route.path ? classes.activeMenu : null
               }`}
             >
+              <span className={classes.icon}>{route.icon}</span>
               {route.name}
             </MenuItem>
           ))}
