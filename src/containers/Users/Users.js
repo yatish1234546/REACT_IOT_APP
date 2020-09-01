@@ -119,7 +119,7 @@ const User = props => {
   };
   return (
     <Grid container spacing={2}>
-      <Grid item sm={5}>
+      <Grid item sm={4}>
         <Toolbar className={classes.appBar}>
           <Typography variant="h6" className="title">
             Add New User
@@ -232,7 +232,7 @@ const User = props => {
           </CardActions>
         </Card>
       </Grid>
-      <Grid item sm={7}>
+      <Grid item sm={8}>
         <TableContainer component={Paper}>
           <Table aria-label="customized table">
             <TableHead>
@@ -258,7 +258,9 @@ const User = props => {
                     {user.userName}
                   </StyledTableCell>
                   <StyledTableCell component="th" scope="row">
-                    {user.roles}
+                    {user.roles.map(role => {
+                      return <Chip key={role} label={role} />;
+                    })}
                   </StyledTableCell>
                   <StyledTableCell component="th" scope="row">
                     {user.email}

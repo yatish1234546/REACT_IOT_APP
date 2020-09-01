@@ -94,7 +94,13 @@ const Floors = props => {
               <Typography component="h6" className={classes.title}>
                 Mode: {floor.mode}
               </Typography>
-              <Typography component="h6">No of Devices Available</Typography>
+              {floor.clusters.length !== 0 ? (
+                <Typography component="h6">
+                  Clusters On Floor: {floor.clusters.length}
+                </Typography>
+              ) : (
+                <Typography component="h6">No of Clusters Available</Typography>
+              )}
             </CardContent>
           </Card>
         </Grid>
