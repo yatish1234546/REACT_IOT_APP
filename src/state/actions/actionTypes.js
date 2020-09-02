@@ -6,3 +6,4 @@ export const SAVE_FLOOR = "saveFloor";
 export const GET_USERS = "getUsers";
 export const SAVE_USER = "saveUser";
 export const EDIT_USER = "editUser";
+export const GET_ZONES = "getZones";

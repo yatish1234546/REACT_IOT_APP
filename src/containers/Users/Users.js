@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as actionCreator from "../../state/actions/index";
-import { connect, useDispatch } from "react-redux";
+import { connect } from "react-redux";
 
 import {
   withStyles,
@@ -29,7 +29,7 @@ import {
   IconButton
 } from "@material-ui/core";
 
-import { ChevronRight, Edit } from "@material-ui/icons";
+import { Edit } from "@material-ui/icons";
 
 const StyledTableCell = withStyles(theme => ({
   head: {
@@ -223,10 +223,10 @@ const User = props => {
             </FormControl>
           </CardContent>
           <CardActions>
-            <Button variant="outlined" color="primary" onClick={saveUser}>
+            <Button variant="outlined" className="primary" onClick={saveUser}>
               Save
             </Button>
-            <Button variant="outlined" color="secondary" onClick={cancel}>
+            <Button variant="outlined" className="secondary" onClick={cancel}>
               Cancel
             </Button>
           </CardActions>
