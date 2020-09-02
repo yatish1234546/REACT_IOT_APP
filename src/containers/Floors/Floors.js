@@ -11,7 +11,8 @@ import {
   DialogActions,
   DialogContent,
   Toolbar,
-  Button
+  Button,
+  Paper
 } from "@material-ui/core";
 import * as actionCreator from "../../state/actions/index";
 
@@ -81,28 +82,34 @@ const Floors = props => {
     itemsToRender = props.floors.map(floor => {
       return (
         <Grid item sm={3} key={floor.number}>
-          <Card
-            className={`${classes.root} ${
-              floor.mode === "Maintainence" ? "maintainence" : "operational"
-            }`}
-            variant="outlined"
+          <Paper
+            elevation={24}
+            className="animate__animated animate__slideInLeft"
           >
-            <CardContent>
-              <Typography variant="h5" component="h5" className={classes.title}>
-                {floor.name}
-              </Typography>
-              <Typography component="h6" className={classes.title}>
-                Mode: {floor.mode}
-              </Typography>
-              {floor.clusters.length !== 0 ? (
-                <Typography component="h6">
-                  Clusters On Floor: {floor.clusters.length}
+            <Card
+              className={`${classes.root} ${
+                floor.mode === "Maintainence" ? "maintainence" : "operational"
+              }`}
+              variant="outlined"
+            >
+              <CardContent>
+                <Typography
+                  variant="h5"
+                  component="h5"
+                  className={classes.title}
+                >
+                  {floor.name}
                 </Typography>
-              ) : (
-                <Typography component="h6">No of Clusters Available</Typography>
-              )}
-            </CardContent>
-          </Card>
+                <Typography component="h6" className={classes.title}>
+                  Mode: {floor.mode}
+                </Typography>
+
+                <Typography component="h6">
+                  Zones On Floor: {floor.clusters.length}
+                </Typography>
+              </CardContent>
+            </Card>
+          </Paper>
         </Grid>
       );
     });
@@ -126,7 +133,11 @@ const Floors = props => {
         <Typography variant="h5">Floors</Typography>
       </Grid>
       <Grid item sm={1} style={{ textAlign: "right" }}>
-        <Button onClick={handleClickOpen} color="primary" variant="outlined">
+        <Button
+          onClick={handleClickOpen}
+          className="primary"
+          variant="outlined"
+        >
           Add
         </Button>
       </Grid>
@@ -178,10 +189,14 @@ const Floors = props => {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="secondary" variant="outlined">
+          <Button
+            onClick={handleClose}
+            className="secondary"
+            variant="outlined"
+          >
             Cancel
           </Button>
-          <Button onClick={addNewFloor} color="primary" variant="outlined">
+          <Button onClick={addNewFloor} className="primary" variant="outlined">
             Save
           </Button>
         </DialogActions>

@@ -24,6 +24,7 @@ import { Switch, Route, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actionCreator from "../../state/actions/index";
 import "./NavbarLeft.scss";
+import { toolbarColor } from "../../styles";
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -62,7 +63,7 @@ const useStyles = makeStyles(theme => ({
   drawerPaper: {
     width: drawerWidth,
     color: "white",
-    backgroundColor: "#3f4d67"
+    ...toolbarColor
   },
   drawerHeader: {
     display: "flex",
@@ -92,7 +93,8 @@ const useStyles = makeStyles(theme => ({
     padding: "15px"
   },
   activeMenu: {
-    backgroundColor: "#1dc4e9"
+    backgroundColor: "#738bdc",
+    backgroundImage: "linear-gradient(315deg, #738bdc 0%, #48c3eb 74%)"
   },
   icon: {
     paddingRight: "15px"
@@ -126,6 +128,32 @@ const NavbarLeft = props => {
     ) : null;
   });
 
+  const [admin] = props.user.user.roles.filter(
+    role => role === "Admin" || role === "System Admin"
+  );
+
+  const menulist = (
+    <MenuList>
+      {routes.map((route, index) => {
+        if (!admin && route.name === "Users") {
+          return null;
+        }
+        return (
+          <MenuItem
+            key={route.name}
+            component={Link}
+            to={route.path}
+            className={`${classes.menuItem} ${
+              activeRoute === route.path ? classes.activeMenu : null
+            }`}
+          >
+            <span className={classes.icon}>{route.icon}</span>
+            {route.name}
+          </MenuItem>
+        );
+      })}
+    </MenuList>
+  );
   const handleLogout = () => {
     props.logout();
     props.setDrawer(false);
@@ -153,7 +181,7 @@ const NavbarLeft = props => {
           <Typography variant="h6" noWrap className={classes.title}>
             Imperium
           </Typography>
-          <Button color="inherit" onClick={handleLogout}>
+          <Button className="secondary" onClick={handleLogout}>
             Logout
           </Button>
         </Toolbar>
@@ -173,21 +201,7 @@ const NavbarLeft = props => {
           </IconButton>
         </div>
         <Divider />
-        <MenuList>
-          {routes.map((route, index) => (
-            <MenuItem
-              key={route.name}
-              component={Link}
-              to={route.path}
-              className={`${classes.menuItem} ${
-                activeRoute === route.path ? classes.activeMenu : null
-              }`}
-            >
-              <span className={classes.icon}>{route.icon}</span>
-              {route.name}
-            </MenuItem>
-          ))}
-        </MenuList>
+        {menulist}
       </Drawer>
       <main
         className={clsx(classes.content, {

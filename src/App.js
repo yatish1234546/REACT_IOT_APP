@@ -1,19 +1,20 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import "./App.css";
+import "./styles.scss";
 import { Box } from "@material-ui/core";
 import { Switch, Route } from "react-router-dom";
 import * as actionCreator from "../src/state/actions/index";
 
 import NavbarLeft from "./components/NavbarLeft/NavbarLeft";
 import Login from "./components/Login/Login";
+import "animate.css";
 
 const App = props => {
   const login = async creds => {
     props.login(creds).then(() => {
       props.setDrawer(true);
-      props.history.push({ pathname: "/dashboard" });
+      props.history.push({ pathname: "/" });
     });
   };
 

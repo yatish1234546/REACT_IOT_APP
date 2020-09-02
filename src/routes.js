@@ -1,8 +1,8 @@
 import React from "react";
-import Dashboard from "./containers/Dashboard/Dashboard.js";
-import Floors from "./containers/Floors/Floors.js";
-import User from "./containers/Users/Users.js";
-import Clusters from "./containers/Clusters/Clusters.js";
+import Dashboard from "./containers/Dashboard/Dashboard";
+import Floors from "./containers/Floors/Floors";
+import User from "./containers/Users/Users";
+import Zones from "./containers/Zones/Zones";
 import {
   GroupWork,
   Dashboard as DashIcon,
@@ -26,10 +26,10 @@ const route = [
     icon: <Apartment />
   },
   {
-    path: "/clusters",
+    path: "/zones",
     exact: true,
-    name: "Clusters",
-    component: Clusters,
+    name: "Zones",
+    component: Zones,
     icon: <GroupWork />
   },
   {

@@ -1,7 +1,6 @@
 import { getFloorsAPI, addFloorAPI } from "../../api/floor";
 
 import * as actionTypes from "./actionTypes";
-//MUTATIONS
 
 export const fetchFloors = floors => {
   return {
@@ -10,20 +9,19 @@ export const fetchFloors = floors => {
   };
 };
 
-export const saveFloor = floor => {
-  return {
-    type: actionTypes.SAVE_FLOOR,
-    payload: floor
-  };
-};
-
-//ACTIONS
 export const getFloors = () => {
   return async dispatch => {
     const response = await getFloorsAPI();
     if (response.data) {
       dispatch(fetchFloors(response.data));
     }
+  };
+};
+
+export const saveFloor = floor => {
+  return {
+    type: actionTypes.SAVE_FLOOR,
+    payload: floor
   };
 };
 
