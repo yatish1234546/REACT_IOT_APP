@@ -100,12 +100,16 @@ const Floors = props => {
                 >
                   {floor.name}
                 </Typography>
-                <Typography component="h6" className={classes.title}>
+                <Typography
+                  component="h6"
+                  variant="button"
+                  className={classes.title}
+                >
                   Mode: {floor.mode}
                 </Typography>
 
-                <Typography component="h6">
-                  Zones On Floor: {floor.clusters.length}
+                <Typography variant="caption" component="h6">
+                  Zones On Floor: {floor.zones.length}
                 </Typography>
               </CardContent>
             </Card>
@@ -130,7 +134,9 @@ const Floors = props => {
   return (
     <Grid container spacing={3}>
       <Grid item sm={11}>
-        <Typography variant="h5">Floors</Typography>
+        <Typography variant="h4" component="h4" color="textPrimary">
+          Floors
+        </Typography>
       </Grid>
       <Grid item sm={1} style={{ textAlign: "right" }}>
         <Button
